@@ -18,3 +18,13 @@ body {
 .selected {
     color: aliceblue;
 }
+
+.succes {
+    background-color: green;
+    list-style-type: none;
+}
+
+.error {
+    background-color: red;
+    list-style-type: none;
+}
