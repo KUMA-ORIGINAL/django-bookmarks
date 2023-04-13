@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-o+p_5l)6do0ctp7djfy)g8cqqv#bbrm8v4hc=rb^cd^s*vmot!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kuma.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -136,5 +138,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
-    'account.authentication.EmailAuthBackend'
+    'account.authentication.EmailAuthBackend',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.google.GoogleOAuth2'
 ]
+
+SOCIAL_AUTH_FACEBOOK_KEY = '3077906712514094'
+SOCIAL_AUTH_FACEBOOK_SECRET = 'c3809e0ade78789a87f41c4f2feb828a'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
