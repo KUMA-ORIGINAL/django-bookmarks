@@ -12,10 +12,16 @@ class Image(models.Model):
     url = models.URLField()
     image = models.ImageField(upload_to='images/%y/%m/%d')
     description = models.TextField(blank=True)
-    created = models.DateField(auto_now_add=True, db_index=True)
+    created = models.DateField(auto_now_add=True)
     users_like = models.ManyToManyField(settings.AUTH_USER_MODEL,
                                         related_name='images_liked',
                                         blank=True)
+
+    class Meta:
+        indexes = [
+            models.Index(fields=['-created'])
+        ]
+        ordering = ['-created']
 
     def __str__(self):
         return self.title

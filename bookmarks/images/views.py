@@ -11,13 +11,12 @@ def image_create(request):
         form = ImageCreateForm(data=request.POST)
         if form.is_valid():
             cd = form.cleaned_data
-            new_item = form.save(commit=False)
-            new_item.user = request.user
-            new_item.save()
+            new_image = form.save(commit=False)
+            new_image.user = request.user
+            new_image.save()
             messages.success(request, ' Image added successfully')
-            return redirect(new_item.get_absolute_url())
+            return redirect(new_image.get_absolute_url())
     else:
         form = ImageCreateForm(data=request.GET)
-    return render(request, 'images/create.html',
+    return render(request, 'images/image/create.html',
                   {'section': 'images', 'form': form})
-
